@@ -890,3 +890,34 @@ body:has(.seller-assisted-buying-banner) {
     display: inline-block;
   }
 }
+
+/* ---------------------------------------------------------------------- */
+/* Warm-neutral header treatment (matches the homepage's `.section.warm`  */
+/* palette). Scoped to `header` only — does not touch --background-color  */
+/* or --color-brand-*/--color-neutral-*, so cart/checkout/account chrome  */
+/* elsewhere on the site is unaffected. Cart/wishlist/search icons are    */
+/* raster background-images (not currentColor masks), so they render      */
+/* unchanged on the new background.                                      */
+/* ---------------------------------------------------------------------- */
+header .nav-wrapper {
+  background-color: #f6f1e9;
+  border-bottom-color: #e2d8c6;
+}
+
+header nav .nav-tools {
+  background: #f6f1e9;
+}
+
+header nav .nav-sections ul > li > a,
+header nav .nav-sections ul > li > p,
+header nav .nav-brand a {
+  color: #2a2420;
+}
+
+header nav .nav-tools-wrapper > button {
+  color: #2a2420;
+}
+
+header nav .nav-cart-button[data-count]::after {
+  background-color: #2a2420;
+}
