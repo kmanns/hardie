@@ -900,28 +900,28 @@ body:has(.seller-assisted-buying-banner) {
 /* unchanged on the new background.                                      */
 /* ---------------------------------------------------------------------- */
 header.header-wrapper .nav-wrapper {
-  background-color: #f6f1e9;
-  border-bottom-color: #e2d8c6;
+  background-color: #f6f1e9 !important;
+  border-bottom-color: #e2d8c6 !important;
 }
 
 header nav .nav-tools {
-  background: #f6f1e9;
+  background: #f6f1e9 !important;
 }
 
 header nav .nav-sections ul > li > a,
 header nav .nav-sections ul > li > p,
 header nav .nav-brand a {
-  color: #2a2420;
+  color: #2a2420 !important;
 }
 
 header nav .nav-tools-wrapper > button {
-  color: #2a2420;
+  color: #2a2420 !important;
 }
 
 header nav .nav-cart-button[data-count]::after {
-  background-color: #2a2420;
+  background-color: #2a2420 !important;
 }
 
 header nav[aria-expanded='true'] .nav-tools {
-  background: #f6f1e9;
+  background: #f6f1e9 !important;
 }
