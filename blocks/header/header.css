@@ -921,3 +921,7 @@ header nav .nav-tools-wrapper > button {
 header nav .nav-cart-button[data-count]::after {
   background-color: #2a2420;
 }
+
+header nav[aria-expanded='true'] .nav-tools {
+  background: #f6f1e9;
+}
