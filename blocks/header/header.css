@@ -899,7 +899,7 @@ body:has(.seller-assisted-buying-banner) {
 /* raster background-images (not currentColor masks), so they render      */
 /* unchanged on the new background.                                      */
 /* ---------------------------------------------------------------------- */
-header .nav-wrapper {
+header.header-wrapper .nav-wrapper {
   background-color: #f6f1e9;
   border-bottom-color: #e2d8c6;
 }
