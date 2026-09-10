@@ -565,6 +565,42 @@ main .section[data-margin="xxhuge"] {
     margin: var(--spacing-xxhuge) 0;
 }
 
+/* ---------------------------------------------------------------------- */
+/* `warm` section style (Style: warm in section-metadata) — an opt-in,     */
+/* homepage-scoped warm-neutral treatment (cream background, dark         */
+/* charcoal-brown headings/buttons) that does NOT touch the shared        */
+/* --color-brand-*/--color-neutral-* tokens used by cart/checkout/account.*/
+/* ---------------------------------------------------------------------- */
+main .section.warm {
+  background-color: #f6f1e9;
+  margin: 0;
+  padding: var(--spacing-xbig) 0;
+}
+
+main .section.warm h2,
+main .section.warm h3 {
+  color: #2a2420;
+}
+
+main .section.warm a.button.primary,
+main .section.warm button.button.primary {
+  border-color: #2a2420;
+  background-color: #2a2420;
+}
+
+main .section.warm a.button.primary:hover,
+main .section.warm a.button.primary:focus-visible,
+main .section.warm button.button.primary:hover,
+main .section.warm button.button.primary:focus-visible {
+  border-color: #46362b;
+  background-color: #46362b;
+}
+
+main .section.warm .cards > ul > li {
+  border-color: #e2d8c6;
+  background-color: #fffdfa;
+}
+
 /* section metadata - styles - end */
 
 /* Base Design System Tokens */
