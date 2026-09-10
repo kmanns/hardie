@@ -582,4 +582,21 @@ export default async function decorate(block) {
   if (isAuthenticated && getConfigValue('commerce-companies-enabled') === true) {
     await (await import('./renderCompanySwitcher.js')).default(navTools);
   }
+
+  // Warm-neutral header treatment (matches the homepage's `.section.warm`
+  // palette). Applied here via inline styles rather than header.css: the
+  // equivalent CSS rules are present in the stylesheet but the browser's
+  // render engine mysteriously never picks them up (confirmed via network
+  // inspection that the correct, complete CSS reaches the page — root cause
+  // not identified). Inline `!important` styles reliably take effect.
+  const navWrapperEl = nav.closest('.nav-wrapper');
+  navWrapperEl?.style.setProperty('background-color', '#f6f1e9', 'important');
+  navWrapperEl?.style.setProperty('border-bottom-color', '#e2d8c6', 'important');
+  navTools.style.setProperty('background', '#f6f1e9', 'important');
+  block.querySelectorAll('.nav-sections a, .nav-sections p, .nav-brand a').forEach((el) => {
+    el.style.setProperty('color', '#2a2420', 'important');
+  });
+  block.querySelectorAll('.nav-tools-wrapper > button').forEach((el) => {
+    el.style.setProperty('color', '#2a2420', 'important');
+  });
 }
