@@ -31,8 +31,8 @@ The Hero V2 block expects the following structure:
         <h2>Title Text</h2>
         <h3>Subtitle Text</h3>
         <p>Description text goes here</p>
-        <p class="button-container">
-          <a href="..." class="button">CTA Label</a>
+        <p class="button-wrapper">
+          <a href="..." class="button primary">CTA Label</a>
         </p>
       </div>
     </div>
@@ -46,7 +46,7 @@ The Hero V2 block expects the following structure:
 - **Title**: Large heading, positioned at the top.
 - **Subtitle**: Secondary heading, smaller, aligned below or beside the title.
 - **Description**: Supporting text, positioned mid-block.
-- **CTA**: Optional button, positioned toward the bottom right.
+- **CTA**: Optional button, positioned toward the bottom right. Author the link **bold** (e.g. `**[Shop Now](/apparel)**`) so the site-wide button decoration picks it up — a plain link renders as plain text.
 
 You can configure content in the `.json` model definition (`_hero-v2.json`).
 
@@ -70,6 +70,21 @@ Styles can be customized through `hero-v2.css`. The block is responsive and desi
 |----------------|---------------|---------------|-------------------|-----------|----------------|
 | /img/example.jpg | Welcome      | To Our Site   | Discover more...  | Learn More| /learn-more    |
 ```
+
+## Video background (optional)
+
+Add a `Video URL` pointing to a YouTube/Vimeo link or a direct `.mp4`/`.webm`/`.ogg`
+file to play it muted and looped behind the poster image once the hero scrolls
+into view. Leave it blank for an image-only hero. The poster image always shows
+first (and stays shown under `prefers-reduced-motion`), so swapping the video
+later is just replacing one field.
+
+## `wide` variant
+
+Add `(wide)` to the block name in DA (`Hero V2 (wide)`) for a full-bleed,
+edge-to-edge hero with a centered headline and pill CTA over the image/video —
+use this for a page's top-of-page hero. Without it, Hero V2 renders as the
+original contained card layout.
 
 ## Notes
 

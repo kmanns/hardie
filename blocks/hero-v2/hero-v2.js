@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { isVideoLink, loadVideoEmbed, prefersReducedMotion } from '../../scripts/video-embed.js';
 
 export default function decorate(block) {
   const heromain = document.createElement('div');
@@ -12,12 +13,25 @@ export default function decorate(block) {
     const herobody = document.createElement('div');
     herobody.className = 'hero-v2-body';
 
-    // Move each child to either heroimage (if picture) or herobody (otherwise)
+    let videoLink;
+
+    // Move each child to either heroimage (if picture), the video-link slot
+    // (a standalone link to a video file/YouTube/Vimeo, not the CTA button),
+    // or herobody (everything else).
     while (row.firstElementChild) {
       const child = row.firstElementChild;
-      // Use 'contains picture' check for both direct and nested pictures
+      // A CTA link is authored bold (`**Label**`) and has already been
+      // buttonized (class `button-wrapper`) by scripts.js#decorateButtons,
+      // which runs before block decoration. A bare, un-buttonized link is
+      // the video-url field.
+      const bareLink = child.tagName === 'P' && !child.classList.contains('button-wrapper')
+        ? child.querySelector('a[href]')
+        : null;
       if (child.querySelector && child.querySelector('picture')) {
         heroimage.append(child);
+      } else if (bareLink && isVideoLink(bareLink.href) && !videoLink) {
+        videoLink = bareLink.href;
+        child.remove();
       } else {
         herobody.append(child);
       }
@@ -27,6 +41,21 @@ export default function decorate(block) {
     herocontent.append(heroimage);
     herocontent.append(herobody);
     heromain.append(herocontent);
+
+    if (videoLink) {
+      heroimage.classList.add('has-video');
+      const observer = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          observer.disconnect();
+          const playOnLoad = !prefersReducedMotion.matches;
+          loadVideoEmbed(heroimage, videoLink, playOnLoad, true, (embed) => {
+            embed.classList?.add('hero-v2-video');
+            heroimage.classList.add('video-ready');
+          });
+        }
+      });
+      observer.observe(heroimage);
+    }
   });
 
   // Fix: Use img.getAttribute('src') instead of img.src in case src hasn't resolved properly

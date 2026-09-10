@@ -175,3 +175,113 @@
 
 /* Style for UE Structure - end */
 
+/* ---------------------------------------------------------------------- */
+/* `wide` variant: full-bleed photographic/video hero (block name          */
+/* "Hero V2 (wide)" in DA authoring), centered headline + CTA. Optional    */
+/* video background via the `videoUrl` field; falls back to the poster    */
+/* image when no video is set or prefers-reduced-motion is on.            */
+/* ---------------------------------------------------------------------- */
+
+.hero-v2.wide {
+  max-width: unset;
+  min-height: 60vh;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.hero-v2.wide .hero-v2-main,
+.hero-v2.wide .hero-v2-content {
+  height: 60vh;
+  min-height: 420px;
+}
+
+.hero-v2.wide .hero-v2-image {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero-v2.wide .hero-v2-image picture,
+.hero-v2.wide .hero-v2-image picture img,
+.hero-v2.wide .hero-v2-image .hero-v2-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.hero-v2.wide .hero-v2-image.has-video.video-ready picture {
+  visibility: hidden;
+}
+
+.hero-v2.wide .hero-v2-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(20 16 12 / 15%) 0%, rgb(20 16 12 / 45%) 100%);
+}
+
+.hero-v2.wide .hero-v2-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px;
+  gap: 16px;
+}
+
+.hero-v2.wide h2,
+.hero-v2.wide h3,
+.hero-v2.wide .hero-v2-body p:nth-child(3),
+.hero-v2.wide .hero-v2-body p:nth-child(4) {
+  position: static;
+  width: auto;
+  max-width: 640px;
+  top: auto;
+  left: auto;
+  right: auto;
+  margin: 0;
+}
+
+.hero-v2.wide h2 {
+  font-size: 3rem;
+  line-height: 1.1;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  color: #fff;
+  max-width: 760px;
+}
+
+.hero-v2.wide h3 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: rgb(255 255 255 / 90%);
+}
+
+.hero-v2.wide .hero-v2-body p:nth-child(4) a.button {
+  position: static;
+  display: inline-block;
+  background-color: var(--color-brand-700);
+  color: #fff;
+  border-radius: 999px;
+  padding: 14px 32px;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-v2.wide .hero-v2-body p:nth-child(4) a.button:hover {
+  background-color: var(--color-brand-600);
+}
+
+@media (min-width: 900px) {
+  .hero-v2.wide h2 {
+    font-size: 4rem;
+  }
+}
+
